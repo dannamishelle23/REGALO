@@ -1,0 +1,38 @@
+/* Etapa 5: animaciones narrativas ligeras y accesibles */
+.intro-reveal{opacity:0;transform:translateY(8px)}
+.intro-reveal.is-visible{opacity:1;transform:none}
+.diagnostico-terminal{margin:1.4rem 0 1.1rem;padding:1.2rem;border:1px solid rgba(167,139,250,.26);border-radius:16px;background:rgba(12,10,17,.48);box-shadow:inset 0 0 30px rgba(167,139,250,.035)}
+.terminal-line{min-height:1.45em;margin:.32rem 0;color:var(--lavender);font-family:Consolas,"Courier New",ui-monospace,monospace;font-size:.78rem;letter-spacing:.035em;opacity:0}
+.terminal-line.is-visible,.declaracion--typing.is-visible{opacity:1}
+.terminal-line--muted{color:#9d94ac}.terminal-line--error{margin-top:.9rem;color:var(--pink);font-weight:800}
+.declaracion--typing{position:relative;min-height:1.3em;margin:.35rem 0 0;font-family:Consolas,"Courier New",ui-monospace,monospace;font-size:clamp(1.35rem,6vw,2.7rem);letter-spacing:.035em;opacity:0}
+.is-typing::after{content:"▋";display:inline-block;margin-left:.12em;color:var(--pink);animation:cursor-blink .75s steps(1,end) infinite}
+.diagnostico-copy{opacity:0;transform:translateY(8px)}.diagnostico-copy.is-visible{opacity:1;transform:none}
+.final-reveal{opacity:0;transform:translateY(22px) scale(.985)}.final-reveal.is-visible{opacity:1;transform:none}.final-status{opacity:.18;filter:blur(4px);transform:scale(.97)}.final-status.is-visible{opacity:1;filter:none;transform:none;text-shadow:0 0 30px rgba(231,175,200,.22)}
+@keyframes cursor-blink{0%,45%{opacity:1}46%,100%{opacity:0}}
+@keyframes entrada-pantalla{from{opacity:0;transform:translateY(18px);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+@media (prefers-reduced-motion:no-preference){
+  .intro-reveal{transition:opacity .8s ease .15s,transform .8s ease .15s}
+  .diagnostico-copy{transition:opacity .7s ease,transform .7s ease}
+  .pantalla--activa .contenedor{animation:entrada-pantalla .52s cubic-bezier(.2,.8,.2,1) both}
+  .final-reveal{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .final-status{transition:opacity .8s ease,filter .8s ease,transform .8s ease}
+  .panel{transition:border-color .25s ease,transform .25s ease}.panel:hover{border-color:rgba(167,139,250,.5)}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.intro-reveal,.diagnostico-copy,.final-reveal,.final-status{opacity:1!important;transform:none!important;filter:none!important}}
+
+/* Refinamiento Etapa 5: movimiento narrativo en las cuatro secciones */
+.motion-title{font-family:Consolas,"Courier New",ui-monospace,monospace}.motion-title.title-enter{min-height:1.05em}
+.diagnostic-card{opacity:0;transform:translateX(-34px)}.diagnostic-card:nth-child(2){transform:translateX(34px)}.diagnostic-card.is-visible{opacity:1;transform:none}.type-field{min-height:1em}.content-enter .recuerdos-shell{animation:cards-slide-in .72s cubic-bezier(.2,.8,.2,1) both}.content-enter .cabecera-seccion>p{animation:soft-up .55s ease .15s both}
+@keyframes cards-slide-in{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}@keyframes soft-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){.diagnostic-card{transition:opacity .6s ease,transform .65s cubic-bezier(.2,.8,.2,1)}}
+@media (prefers-reduced-motion:reduce){.diagnostic-card{opacity:1!important;transform:none!important}}
+
+/* Etapa 7.1: las tarjetas no reescriben su contenido */
+.diagnostic-card{opacity:0!important;transform:translateY(28px) scale(.97)!important;filter:blur(6px)}.diagnostic-card.is-revealed{opacity:1!important;transform:none!important;filter:none}.diagnostico-action{visibility:hidden;opacity:0;transform:translateY(14px);pointer-events:none}.diagnostico-action.is-visible{visibility:visible;opacity:1;transform:none;pointer-events:auto}.dias-card,.birthday-card{visibility:hidden;opacity:0;transform:translateY(24px) scale(.98);max-height:0;overflow:hidden}.dias-card.is-visible,.birthday-card.is-visible{visibility:visible;opacity:1;transform:none;max-height:620px;overflow:visible}@media(prefers-reduced-motion:no-preference){.diagnostic-card{transition:opacity .7s ease,transform .75s cubic-bezier(.2,.8,.2,1),filter .7s ease}.diagnostico-action{transition:opacity .55s ease,transform .55s ease}.dias-card,.birthday-card{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1),max-height .8s ease}.birthday-card.is-visible{animation:birthday-arrival .9s ease both}@keyframes birthday-arrival{0%{box-shadow:0 0 0 rgba(231,175,200,0)}65%{box-shadow:0 0 58px rgba(231,175,200,.28)}100%{box-shadow:0 0 45px rgba(231,175,200,.13)}}}@media(prefers-reduced-motion:reduce){.diagnostic-card,.diagnostico-action,.dias-card,.birthday-card{visibility:visible!important;opacity:1!important;transform:none!important;filter:none!important;max-height:none!important;overflow:visible!important;pointer-events:auto!important}}
+
+/* Refinamiento solicitado: intro secuencial + datos del diagnostico con efecto distinto al typewriter */
+.intro-stage{opacity:0;transform:translateY(12px);filter:blur(4px)}.intro-stage.is-visible{opacity:1;transform:none;filter:none}.intro-action{visibility:hidden;opacity:0;transform:translateY(14px);pointer-events:none}.intro-action.is-visible{visibility:visible;opacity:1;transform:none;pointer-events:auto}
+.diagnostic-card [data-field-text]{opacity:0;transform:translateX(-14px);filter:blur(3px)}.diagnostic-card [data-field-text].field-reveal{opacity:1;transform:none;filter:none}.diagnostic-card:nth-child(2) [data-field-text]{transform:translateX(14px)}.diagnostic-card:nth-child(2) [data-field-text].field-reveal{transform:none}
+@media(prefers-reduced-motion:no-preference){.intro-stage{transition:opacity .55s ease,transform .55s ease,filter .55s ease}.intro-action{transition:opacity .55s ease,transform .55s ease}.diagnostic-card [data-field-text]{transition:opacity .5s ease,transform .55s cubic-bezier(.2,.8,.2,1),filter .5s ease}}
+@media(prefers-reduced-motion:reduce){.intro-stage,.intro-action,.diagnostic-card [data-field-text]{visibility:visible!important;opacity:1!important;transform:none!important;filter:none!important;pointer-events:auto!important}}

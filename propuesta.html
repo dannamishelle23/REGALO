@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Una última propuesta</title>
+
+  <style>
+    :root {
+      --pink: #ff78c8;
+      --purple: #b78cff;
+      --cyan: #7de7ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          #271638,
+          #100b18 52%,
+          #08060d
+        );
+
+      color: #fff4fc;
+      font-family: "Courier New", monospace;
+    }
+
+    .scene {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 1.4rem;
+      text-align: center;
+      isolation: isolate;
+    }
+
+    /* LUCES DEL FONDO */
+
+    .light {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(72px);
+      opacity: .38;
+      z-index: -2;
+      animation: drift 6s ease-in-out infinite alternate;
+    }
+
+    .one {
+      width: 48vw;
+      height: 48vw;
+      left: -12vw;
+      top: -10vw;
+      background: var(--pink);
+    }
+
+    .two {
+      width: 46vw;
+      height: 46vw;
+      right: -12vw;
+      bottom: -12vw;
+      background: var(--purple);
+      animation-delay: -2s;
+    }
+
+    .three {
+      width: 27vw;
+      height: 27vw;
+      left: 38%;
+      bottom: -10vw;
+      background: var(--cyan);
+      animation-delay: -4s;
+    }
+
+    /* PUNTITOS PIXELADOS */
+
+    .pixels {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .62;
+
+      background-image:
+        radial-gradient(
+          circle,
+          #ff9bd6 1px,
+          transparent 1.5px
+        ),
+        radial-gradient(
+          circle,
+          #8feaff 1px,
+          transparent 1.5px
+        );
+
+      background-size:
+        43px 43px,
+        59px 59px;
+
+      background-position:
+        0 0,
+        19px 23px;
+    }
+
+    /* TARJETA */
+
+    .proposal {
+      width: min(930px, 100%);
+      padding: clamp(1.5rem, 5vw, 4rem);
+
+      border: 1px solid #ff96d756;
+      border-radius: 28px;
+
+      background: #120b1ca8;
+
+      box-shadow:
+        0 0 42px #ff78c82b,
+        inset 0 0 48px #b78cff12;
+
+      backdrop-filter: blur(16px);
+    }
+
+    .eyebrow {
+      color: #d9c9e8;
+      font-size: clamp(.65rem, 2vw, .85rem);
+      letter-spacing: .24em;
+    }
+
+    /* PREGUNTA */
+
+    h1 {
+      margin: .5rem 0 0;
+
+      font-size: clamp(2rem, 8.2vw, 6.3rem);
+      line-height: 1.04;
+
+      text-transform: uppercase;
+      text-wrap: balance;
+
+      min-height: 3.2em;
+
+      color: #fff4fc;
+
+      text-shadow:
+        3px 0 #ff78c885,
+        -3px 0 #7de7ff54,
+        0 0 16px #ff78c8d0,
+        0 0 48px #b78cff7a;
+    }
+
+    /*
+      Mientras se está escribiendo,
+      aparece el cursor.
+    */
+
+    h1.escribiendo::after {
+      content: "▋";
+      margin-left: .08em;
+      color: var(--pink);
+
+      animation:
+        cursor-blink .7s steps(1, end) infinite;
+    }
+
+    /*
+      Cuando termina de escribirse,
+      JS agrega esta clase y comienza
+      el efecto de letrero de neón.
+    */
+
+    h1.neon-activo {
+      animation:
+        neon-flicker 3.4s steps(1, end) infinite;
+    }
+
+    /* BOTÓN */
+
+    .back {
+      display: inline-flex;
+
+      margin-top: 2.1rem;
+      padding: .75rem 1rem;
+
+      border: 1px solid #ffffff30;
+      border-radius: 12px;
+
+      color: #eadcef;
+      text-decoration: none;
+
+      opacity: 0;
+      transform: translateY(10px);
+
+      transition:
+        opacity .7s ease,
+        transform .7s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .back.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .back:hover,
+    .back:focus-visible {
+      border-color: var(--pink);
+
+      box-shadow:
+        0 0 20px rgba(255, 120, 200, .25);
+    }
+
+    /* ANIMACIÓN DEL CURSOR */
+
+    @keyframes cursor-blink {
+      0%,
+      45% {
+        opacity: 1;
+      }
+
+      46%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* EFECTO PRENDIDO/APAGADO */
+
+    @keyframes neon-flicker {
+
+      0%,
+      8%,
+      12%,
+      18%,
+      22%,
+      58%,
+      62%,
+      100% {
+        opacity: 1;
+        filter: brightness(1.2);
+      }
+
+      9%,
+      19%,
+      59% {
+        opacity: .18;
+        filter: brightness(.45);
+      }
+
+      10%,
+      20%,
+      60% {
+        opacity: .75;
+      }
+
+      35% {
+        opacity: .9;
+        filter: brightness(.85);
+      }
+
+      36% {
+        opacity: .25;
+      }
+
+      37% {
+        opacity: 1;
+        filter: brightness(1.35);
+      }
+    }
+
+    @keyframes drift {
+      to {
+        transform:
+          translate(7vw, 5vh)
+          scale(1.12);
+      }
+    }
+
+    /* ACCESIBILIDAD */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      * {
+        animation: none !important;
+      }
+
+      .back {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="scene">
+
+    <div class="light one" aria-hidden="true"></div>
+    <div class="light two" aria-hidden="true"></div>
+    <div class="light three" aria-hidden="true"></div>
+
+    <div class="pixels" aria-hidden="true"></div>
+
+    <section class="proposal">
+
+      <p class="eyebrow">
+        ONE LAST REQUEST...
+      </p>
+
+      <h1
+        id="pregunta"
+        aria-label="¿Quieres que vayamos al cielo juntos esta noche?"
+      ></h1>
+
+      <a
+        id="volver"
+        class="back"
+        href="index.html"
+      >
+        ← VOLVER AL REGALO
+      </a>
+
+    </section>
+
+  </main>
+
+  <script>
+    const pregunta =
+      "¿QUIERES QUE VAYAMOS AL CIELO JUNTOS ESTA NOCHE?";
+
+    const titulo =
+      document.getElementById("pregunta");
+
+    const botonVolver =
+      document.getElementById("volver");
+
+    const reducirMovimiento =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    function esperar(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function escribirPregunta() {
+
+      /*
+       * Si el usuario tiene activada la reducción
+       * de movimiento, mostramos todo directamente.
+       */
+      if (reducirMovimiento) {
+        titulo.textContent = pregunta;
+        botonVolver.classList.add("visible");
+        return;
+      }
+
+      titulo.classList.add("escribiendo");
+
+      /*
+       * Pequeña pausa antes de empezar.
+       */
+      await esperar(700);
+
+      /*
+       * Escribe una letra a la vez.
+       */
+      for (const letra of pregunta) {
+
+        titulo.textContent += letra;
+
+        /*
+         * Pequeña variación para que no parezca
+         * una animación completamente mecánica.
+         */
+        if (letra === " ") {
+          await esperar(55);
+        } else {
+          await esperar(85);
+        }
+      }
+
+      /*
+       * Mantiene la frase quieta un momento.
+       */
+      await esperar(700);
+
+      /*
+       * Quitamos el cursor.
+       */
+      titulo.classList.remove("escribiendo");
+
+      /*
+       * Ahora comienza el efecto de
+       * encendido/apagado del neón.
+       */
+      titulo.classList.add("neon-activo");
+
+      /*
+       * Dejamos que el usuario vea primero
+       * el efecto antes de mostrar el botón.
+       */
+      await esperar(1000);
+
+      botonVolver.classList.add("visible");
+    }
+
+    escribirPregunta();
+  </script>
+
+</body>
+</html>

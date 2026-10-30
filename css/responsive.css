@@ -1,0 +1,8 @@
+/* Mobile First: ampliaciones progresivas */
+@media (min-width:600px){.pantalla{padding-inline:2rem}.placeholder-recuerdos{grid-auto-columns:minmax(360px,70%)}}
+@media (min-width:768px){.rejilla-info{grid-template-columns:1fr 1fr}.placeholder-recuerdos{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}.controles-placeholder{display:none}}
+@media (min-width:1024px){.pantalla{padding:7rem 3rem}.placeholder-recuerdos{grid-template-columns:repeat(3,minmax(0,1fr))}.placeholder-card{min-height:360px}}
+@media (min-width:1440px){.pantalla{padding-block:8rem}}
+
+@media (min-width:768px){.recuerdos-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;padding:.5rem 0 1rem}.flip-card{width:auto;height:390px}.carousel-controls{display:none}}
+@media (min-width:1024px){.recuerdos-track{grid-template-columns:repeat(3,minmax(0,1fr))}.flip-card{height:410px}}

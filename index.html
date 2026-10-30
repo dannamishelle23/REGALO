@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Regalo interactivo de cumpleaños para Mateo Cárdenas">
+  <title>Sistema de recuerdos</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+<style>.intro-stage,.interview-piece{opacity:0;transform:translateY(12px);filter:blur(3px)}.intro-stage.is-visible,.interview-piece.is-visible{opacity:1;transform:none;filter:none}.intro-action,.diagnostico-action{visibility:hidden;opacity:0;transform:translateY(14px);pointer-events:none}.intro-action.is-visible,.diagnostico-action.is-visible{visibility:visible;opacity:1;transform:none;pointer-events:auto}.intro-stage,.interview-piece,.intro-action,.diagnostico-action{transition:opacity .55s ease,transform .55s ease,filter .55s ease}.interview{display:flex;flex-direction:column;gap:.9rem;margin-top:.8rem;text-align:left}.interview-question{margin:0 0 .25rem;color:#9d94ac;font:700 .72rem/1.35 Consolas,"Courier New",monospace}.interview-answer{margin:0;color:#F5F0FA;font-size:1.04rem;font-weight:750;line-height:1.45}.identity-confirmed{margin-top:1rem;padding:.65rem .8rem;border:1px solid #a78bfa59;border-radius:12px;color:#D9B8F5;font:800 .72rem Consolas,monospace}.instagram-card{display:flex;align-items:center;gap:.85rem;margin-top:1rem;padding:.8rem;border:1px solid #e7afc845;border-radius:16px;background:linear-gradient(135deg,#372540c7,#1f192cdb);text-decoration:none}.instagram-avatar{flex:0 0 52px;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;background:linear-gradient(135deg,#ff7ac6,#9a7dff,#72dcff);border:2px solid #ffffffb3}.instagram-profile-copy{display:flex;flex-direction:column;text-align:left}.instagram-profile-copy strong{color:#fff}.instagram-label{color:#E7AFC8;font:800 .62rem Consolas,monospace}.instagram-profile-copy small{color:#9d94ac}@media(prefers-reduced-motion:reduce){.intro-stage,.interview-piece,.intro-action,.diagnostico-action{visibility:visible!important;opacity:1!important;transform:none!important;filter:none!important;pointer-events:auto!important}}</style><style>
+.dias-card{visibility:hidden;opacity:0;transform:translateY(24px);max-height:0;overflow:hidden;width:min(360px,100%);margin:1.6rem auto;padding:1.2rem;border:1px solid #a78bfa57;border-radius:18px;background:#171222b8;text-align:center}.dias-card.is-visible{visibility:visible;opacity:1;transform:none;max-height:620px;overflow:visible}.dias-card__label{display:block;color:#BDB5C9;font:800 .72rem Consolas,monospace;letter-spacing:.13em}.dias-card__numero{display:block;margin:.25rem 0;color:#D9B8F5;font:900 clamp(3rem,13vw,5.8rem)/1 Consolas,monospace;text-shadow:0 0 32px #a78bfa5c}.cumple-transicion{margin:1.35rem 0 0;color:#E7AFC8;font:800 clamp(1rem,4vw,1.45rem)/1.25 Consolas,monospace;letter-spacing:.08em;opacity:0;transform:translateY(12px)}.dias-card.is-visible .cumple-transicion{animation:cumple-in .75s ease 1.75s forwards}.birthday-card{visibility:hidden;opacity:0;transform:translateY(24px) scale(.98);max-height:0;overflow:hidden;margin-top:1.2rem;padding:clamp(1.25rem,4vw,2rem);border:1px solid #e7afc861;border-radius:22px;background:linear-gradient(145deg,#36253feB,#1f182bef)}.birthday-card.is-visible{visibility:visible;opacity:1;transform:none;max-height:620px;overflow:visible}.boton--propuesta{display:inline-flex;margin-top:1rem;text-decoration:none;color:#18131f;background:linear-gradient(135deg,#E7AFC8,#D9B8F5)}@keyframes cumple-in{to{opacity:1;transform:none}}@media(prefers-reduced-motion:no-preference){.dias-card,.birthday-card{transition:opacity .8s ease,transform .8s ease,max-height .8s ease}}@media(prefers-reduced-motion:reduce){.dias-card,.birthday-card,.cumple-transicion{visibility:visible!important;opacity:1!important;transform:none!important;max-height:none!important;overflow:visible!important}}
+</style></head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <main id="contenido" class="experiencia">
+    <section id="error-sistema" class="pantalla pantalla--activa" aria-labelledby="titulo-error">
+      <div class="ambiente ambiente--uno" aria-hidden="true"></div>
+      <div class="contenedor contenedor--estrecho">
+        <p class="etiqueta">SYSTEM / ALERTA</p>
+        <article class="panel panel--hero">
+          <span class="estado estado--error intro-stage" data-intro-stage>ANOMALÍA DETECTADA</span>
+          <h1 id="titulo-error" class="motion-title" data-motion-title>Ha ocurrido un error :D</h1>
+          <p class="lead intro-stage" data-intro-stage>Algo salió inesperadamente bien...</p>
+          <p class="intro-stage" data-intro-stage>El sistema ha detectado un comportamiento fuera de los parámetros habituales.</p>
+          <div class="codigo-error intro-stage" data-intro-stage role="status">
+            <span>CÓDIGO DE ERROR</span><strong>0xLOVE001</strong>
+          </div>
+          <p class="texto-secundario intro-stage" data-intro-stage>Se ha detectado una anomalía en este programa. ¿Quieres saber la razón? No tomará mucho tiempo.</p>
+          <button class="boton boton--primario intro-action" type="button" data-next="diagnostico" data-intro-action aria-hidden="true" tabindex="-1">INICIAR DIAGNÓSTICO</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="diagnostico" class="pantalla" hidden aria-labelledby="titulo-diagnostico">
+      <div class="contenedor">
+        <p class="etiqueta">SYSTEM / DIAGNÓSTICO</p>
+        <header class="cabecera-seccion">
+          <h2 id="titulo-diagnostico" class="motion-title" data-motion-title>ERROR DETECTADO</h2>
+          <div class="diagnostico-terminal" data-diagnostico-terminal aria-live="polite">
+            <p class="terminal-line" data-type-text="ANALIZANDO SISTEMA..."></p>
+            <p class="terminal-line terminal-line--muted" data-type-text="> verificando causa..."></p>
+            <p class="terminal-line terminal-line--muted" data-type-text="> analizando historial..."></p>
+            <p class="terminal-line terminal-line--muted" data-type-text="> comprobando usuario..."></p>
+            <p class="terminal-line terminal-line--error" data-type-text="ERROR DETECTADO:"></p>
+            <p class="declaracion declaracion--typing" data-type-text="ESTOY ENAMORADA."></p>
+          </div>
+          <p class="diagnostico-copy" data-diagnostico-copy>Este usuario ha desarrollado sentimientos inesperados hacia un usuario en particular.</p>
+        </header>
+        <div class="rejilla-info">
+          <article class="panel diagnostic-card interview-card" data-diagnostic-card data-interview-card>
+            <p class="panel__titulo interview-piece" data-interview-piece>USUARIO IDENTIFICADO</p>
+            <div class="interview">
+              <div class="interview-row interview-piece" data-interview-piece><p class="interview-question">SISTEMA: ¿Cuál es su nombre?</p><p class="interview-answer" data-config="nombre">Mateo Cárdenas</p></div>
+              <div class="interview-row interview-piece" data-interview-piece><p class="interview-question">SISTEMA: ¿Edad?</p><p class="interview-answer"><span data-config="edad">25</span> años</p></div>
+              <div class="interview-row interview-piece" data-interview-piece><p class="interview-question">SISTEMA: ¿Tipo de usuario?</p><p class="interview-answer" data-config="tipo">Usuario especial</p></div>
+              <div class="interview-row interview-piece" data-interview-piece><p class="interview-question">SISTEMA: Características detectadas.</p><p class="interview-answer" data-config="caracteristicas">Características</p></div>
+            </div>
+            <div class="identity-confirmed interview-piece" data-interview-piece>✓ IDENTIDAD CONFIRMADA</div>
+            <a class="instagram-card interview-piece" data-interview-piece href="https://www.instagram.com/johan30c/" target="_blank" rel="noopener noreferrer"><div class="instagram-avatar">MC</div><div class="instagram-profile-copy"><span class="instagram-label">INSTAGRAM / PERFIL VINCULADO</span><strong>@johan30c</strong><small>Ver perfil ↗</small></div></a>
+          </article>
+          <article class="panel panel--acento diagnostic-card" data-diagnostic-card>
+            <p class="panel__titulo type-field" data-field-text="ANÁLISIS DE CAUSA RAÍZ"></p>
+            <h3 class="type-field" data-field-text="CAUSA IDENTIFICADA: TE CONOCÍ." data-config="causa"></h3>
+            <p class="type-field" data-field-text="Se sospecha que una serie de acontecimientos durante la etapa en la Poli desencadenaron esta anomalía." data-config="diagnosticoDescripcion"></p>
+            <span class="estado estado--pendiente type-field" data-field-text="NO RESUELTO" data-config="estado"></span>
+          </article>
+        </div>
+        <button class="boton boton--primario diagnostico-action" type="button" data-next="historial" data-diagnostico-action aria-hidden="true" tabindex="-1">CONSULTAR HISTORIAL</button>
+      </div>
+    </section>
+
+    <section id="historial" class="pantalla" hidden aria-labelledby="titulo-historial">
+      <div class="contenedor">
+        <p class="etiqueta">LOG / EVIDENCIAS</p>
+        <header class="cabecera-seccion">
+          <h2 id="titulo-historial" class="motion-title" data-motion-title>HISTORIAL DE INCIDENTES</h2>
+          <p>Se han encontrado varias evidencias relacionadas con el origen del error.</p>
+        </header>
+        <div class="recuerdos-shell" aria-label="Recuerdos interactivos">
+          <div id="recuerdos-track" class="recuerdos-track"></div>
+          <nav class="carousel-controls" aria-label="Navegación de recuerdos">
+            <button class="boton boton--secundario" id="card-prev" type="button">←</button>
+            <span id="card-counter" aria-live="polite">1 / 1</span>
+            <button class="boton boton--secundario" id="card-next" type="button">→</button>
+          </nav>
+        </div>
+        <div class="accion-historial"><button class="boton boton--primario" type="button" data-next="informe-final">GENERAR INFORME FINAL</button></div>
+      </div>
+    </section>
+
+    <section id="informe-final" class="pantalla pantalla--final" hidden aria-labelledby="titulo-final">
+      <div class="ambiente ambiente--final" aria-hidden="true"></div>
+      <div class="contenedor contenedor--estrecho">
+        <p class="etiqueta">SYSTEM / INFORME FINAL</p>
+        <article class="panel panel--final final-reveal" data-final-reveal>
+          <h2 id="titulo-final" class="motion-title" data-motion-title>INFORME FINAL</h2>
+          <p class="declaracion declaracion--rosa final-status" data-final-status data-config="finalEstado">ERROR IRREVERSIBLE</p>
+          <div class="mensaje-final" data-final-parrafos></div>
+          <div class="dias-card" data-dias-card aria-hidden="true">
+            <span class="dias-card__label">NOS CONOCIMOS HACE</span>
+            <strong class="dias-card__numero" data-days-counter>0</strong>
+            <span class="dias-card__label">DÍAS</span>
+            <small>Desde el 14 de junio de 2025</small>
+            <p class="cumple-transicion">Y HOY ES TU CUMPLEAÑOS</p>
+          </div>
+          <article class="birthday-card" data-felicitacion-reveal aria-hidden="true">
+            <p class="cumpleanos" data-config="felicitacion">¡FELIZ CUMPLEAÑOS, AMOR!</p>
+            <p class="texto-secundario" data-config="mensajeFinal"></p>
+            <p style="margin:1.25rem 0 1.4rem;color:#E7AFC8;font-family:Consolas,'Courier New',monospace;font-size:.95rem;font-style:italic;letter-spacing:.06em;line-height:1.5;text-align:center;text-shadow:0 0 16px rgba(231,175,200,.35);">gracias por aparecer ♡</p>
+            <a class="boton boton--propuesta" href="propuesta.html">VER PROPUESTA</a>
+          </article>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
